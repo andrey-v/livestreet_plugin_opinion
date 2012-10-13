@@ -42,7 +42,7 @@ class PluginOpinion_ActionProfile extends PluginOpinion_Inherit_ActionProfile {
             foreach ($aVotes as $key => $aVote) {
                 switch ($aVote['target_type']) {
                     case 'comment':
-                        $aVotes[$key]['url'] = '/comments/' . $aVote['target_id']; //$this->User_GetVoteForComment('', $aVotes[$key]['vote_value']);
+                        $aVotes[$key]['url'] = '/comments/' . $aVote['target_id'];
                         break;
                     case 'topic':
                         $oTopic = $this->Topic_GetTopicById($aVote['target_id']);

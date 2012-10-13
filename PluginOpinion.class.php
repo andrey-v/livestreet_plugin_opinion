@@ -50,6 +50,15 @@ class PluginOpinion extends Plugin {
         /** Подключение скрипта плагина */
         $this->Viewer_AppendScript(dirname(__FILE__) . "/assets/js/scripts-" . Config::Get('plugin.opinion.mode') . ".js");
 
+        if (Config::Get('plugin.opinion.opinion_for_blog') == true)
+            $this->Viewer_AppendScript(dirname(__FILE__) . "/assets/js/scripts-vote-for-blog.js");
+
+        if (Config::Get('plugin.opinion.opinion_for_topic') == true)
+            $this->Viewer_AppendScript(dirname(__FILE__) . "/assets/js/scripts-vote-for-topic.js");
+
+        if (Config::Get('plugin.opinion.opinion_for_comment') == true)
+            $this->Viewer_AppendScript(dirname(__FILE__) . "/assets/js/scripts-vote-for-comment.js");
+
         /** Подключение стилей плагина */
         $this->Viewer_AppendStyle(dirname(__FILE__) . "/assets/css/styles-" . Config::Get('plugin.opinion.mode') . ".css");
     }

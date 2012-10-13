@@ -16,25 +16,28 @@ class PluginOpinion_ModuleUser extends PluginOpinion_Inherit_ModuleUser {
     public function SetVotingComment($sTargetType, $iTargetId, $sVotingComment) {
         switch ($sTargetType) {
             case 'topic':
-                if ($oTopic = $this->Topic_GetTopicById($iTargetId)) {
-                    $iUserId = $oTopic->getUserId();
-                    $this->oMapper->SetVotingComment($this->oUserCurrent->getId(), $iUserId, $iTargetId, $sTargetType, $sVotingComment);
-                    return true;
-                }
+                if (Config::Get('plugin.opinion.opinion_for_topic') == true)
+                    if ($oTopic = $this->Topic_GetTopicById($iTargetId)) {
+                        $iUserId = $oTopic->getUserId();
+                        $this->oMapper->SetVotingComment($this->oUserCurrent->getId(), $iUserId, $iTargetId, $sTargetType, $sVotingComment);
+                        return true;
+                    }
                 break;
             case 'blog':
-                if ($oBlog = $this->Blog_GetBlogById($iTargetId)) {
-                    $iUserId = $oBlog->getOwnerId();
-                    $this->oMapper->SetVotingComment($this->oUserCurrent->getId(), $iUserId, $iTargetId, $sTargetType, $sVotingComment);
-                    return true;
-                }
+                if (Config::Get('plugin.opinion.opinion_for_blog') == true)
+                    if ($oBlog = $this->Blog_GetBlogById($iTargetId)) {
+                        $iUserId = $oBlog->getOwnerId();
+                        $this->oMapper->SetVotingComment($this->oUserCurrent->getId(), $iUserId, $iTargetId, $sTargetType, $sVotingComment);
+                        return true;
+                    }
                 break;
             case 'comment':
-                if ($oComment = $this->Comment_GetCommentById($iTargetId)) {
-                    $iUserId = $oComment->getUserId();
-                    $this->oMapper->SetVotingComment($this->oUserCurrent->getId(), $iUserId, $iTargetId, $sTargetType, $sVotingComment);
-                    return true;
-                }
+                if (Config::Get('plugin.opinion.opinion_for_comment') == true)
+                    if ($oComment = $this->Comment_GetCommentById($iTargetId)) {
+                        $iUserId = $oComment->getUserId();
+                        $this->oMapper->SetVotingComment($this->oUserCurrent->getId(), $iUserId, $iTargetId, $sTargetType, $sVotingComment);
+                        return true;
+                    }
                 break;
             case 'user':
                 $this->oMapper->SetVotingComment($this->oUserCurrent->getId(), $iTargetId, $iTargetId, $sTargetType, $sVotingComment);
