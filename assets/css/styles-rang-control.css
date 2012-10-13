@@ -1,0 +1,17 @@
+/**
+ * Таблица каскадных стилей, используемых в плагине
+ *
+ * @author  Андрей Г. Воронов <andreyv@gladcode.ru>
+ * @copyrights  Copyright &copy; 2012, Андрей Г. Воронов<br>
+ *              Является частью плагина Opinion<br>
+ * @version 1.0 от 11.10.12 08:19 - Создание файла стилей.<br>
+ *
+ * @package plugins/opinion
+ */
+.strength .count.count-add { background: #def7dc !important; }
+.strength .count.count-remove { background: #ff8a8a !important; }
+.strength .count.count-none { }
+
+.strength .count.count-add span {font-size: 10px; color: #a9a9a9;}
+.strength .count.count-remove span{font-size: 10px; color: white;}
+.strength .count span {font-size: 10px; color: #a9a9a9;}

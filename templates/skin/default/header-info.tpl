@@ -1,0 +1,1 @@
+<div>{$aLang.plugin.opinion.opinion_list_header}</div>

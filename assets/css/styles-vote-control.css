@@ -1,0 +1,23 @@
+/**
+ * Таблица каскадных стилей, используемых в плагине
+ *
+ * @author  Андрей Г. Воронов <andreyv@gladcode.ru>
+ * @copyrights  Copyright &copy; 2012, Андрей Г. Воронов<br>
+ *              Является частью плагина Opinion<br>
+ * @version 1.0 от 11.10.12 08:19 - Создание файла стилей.<br>
+ *
+ * @package plugins/opinion
+ */
+.table-votes th { font-weight: bold !important; }
+
+.cell-vote-count { text-align: center !important; }
+.cell-vote-count.good-vote { color: #27964c; text-shadow:#dce1e6 0 1px 1px; font-weight: bold; font-size: 18px;}
+.cell-vote-count.bad-vote { color: #da4242; text-shadow:#dce1e6 0 1px 1px; font-weight: bold; font-size: 18px;}
+
+.vote-line.good-vote {}
+.vote-line.bad-vote { background-color: rgba(100,0,0,0.11);}
+.vote-line.bad-vote:hover td { background-color: rgba(100,0,0,0.12);}
+
+.cell-vote-types { text-align: center !important; font-style: italic;}
+
+
