@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS  `prefix_opinion` (
+CREATE TABLE IF NOT EXISTS `prefix_opinion` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `target_id` INT(11) UNSIGNED NOT NULL DEFAULT '0',
   `target_type` ENUM('topic', 'blog', 'user', 'comment') CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT 'topic' NOT NULL,
