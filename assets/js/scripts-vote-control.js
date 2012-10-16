@@ -12,7 +12,7 @@
 /************************************ГОЛОСОВАНИЕ ЗА ПОЛЬЗОВАТЕЛЯ*******************************************************/
 /** Переопределяем метод родного ls.vote */
 var $fTmpOnVoteUser = ls.vote.onVoteUser;
-ls.vote.onVoteUser = function(idTarget, objVote, value, type, result) {
+ls.vote.onVoteUser = function (idTarget, objVote, value, type, result) {
     /** Вызываем родительский */
     $fTmpOnVoteUser(idTarget, objVote, value, type, result);
 
@@ -21,8 +21,8 @@ ls.vote.onVoteUser = function(idTarget, objVote, value, type, result) {
 };
 
 /************************************ГОЛОСОВАНИЕ ЗА ТОПИК**************************************************************/
-ls.user.voting_feedback = function(form) {
-    ls.ajaxSubmit('/opinion/feedback', form, function(result) {
+ls.user.voting_feedback = function (form) {
+    ls.ajaxSubmit('/opinion/feedback', form, function (result) {
         if (result.sMsg) {
             ls.msg.notice(null, result.sMsg);
             if (result.bClose)
@@ -31,7 +31,7 @@ ls.user.voting_feedback = function(form) {
     }.bind(ls.user));
 };
 
-ls.vote.showOpinionForm = function(idTarget, type) {
+ls.vote.showOpinionForm = function (idTarget, type) {
     $('#window_voting_feedback_form')
         .find('textarea').val('')
         .end()
@@ -46,7 +46,7 @@ ls.vote.showOpinionForm = function(idTarget, type) {
 /**
  * Удаление списка сообщений
  */
-ls.vote.removeVotes = function() {
+ls.vote.removeVotes = function () {
     if ($('.form_votes_checkbox:checked').length == 0) {
         return false;
     }

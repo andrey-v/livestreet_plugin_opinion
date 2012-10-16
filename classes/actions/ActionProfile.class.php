@@ -53,7 +53,7 @@ class PluginOpinion_ActionProfile extends PluginOpinion_Inherit_ActionProfile {
                         $aVotes[$key]['url'] = '/blog/' . $oBlog->getUrl();
                         break;
                     case 'user':
-                        $aVotes[$key]['url'] = '/' . $this->oUserProfile->getUserWebPath();
+                        $aVotes[$key]['url'] = $this->oUserProfile->getUserWebPath();
                         break;
                 }
             }

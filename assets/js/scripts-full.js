@@ -52,3 +52,15 @@ ls.vote.showOpinionForm = function(idTarget, type) {
         .jqm()
         .jqmShow();
 }
+
+/**
+ * Удаление списка сообщений
+ */
+ls.vote.removeVotes = function () {
+    if ($('.form_votes_checkbox:checked').length == 0) {
+        return false;
+    }
+    $('#form_votes_list_submit_del').val(1);
+    $('#form_votes_list').submit();
+    return false;
+};

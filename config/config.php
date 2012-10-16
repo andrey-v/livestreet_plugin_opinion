@@ -29,10 +29,10 @@ $config = array(
     'opinion_for_user' => true,
 
     /** Отображать ли диалоговое окно мнения при голосовании за блог */
-    'opinion_for_blog' => false,
+    'opinion_for_blog' => true,
 
     /** Отображать ли диалоговое окно мнения при голосовании за топик */
-    'opinion_for_topic' => false,
+    'opinion_for_topic' => true,
 
     /** Отображать ли диалоговое окно мнения при голосовании за комментарий */
     'opinion_for_comment' => true,
