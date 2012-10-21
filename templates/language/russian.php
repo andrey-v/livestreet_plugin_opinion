@@ -27,7 +27,7 @@ return array(
     'cell_header_type' => 'Тип',
     'cell_header_votes' => 'Голос',
     'cell_header_messages' => 'Мнение',
-    'empty_page' => 'Этой страницы не существует!',
+    'empty_page' => 'О Вас еще не сформировалось мнение у пользователей!',
     'opinion_list_header' => 'Мнения сообщества обо мне',
     'comment' => 'Комментарий',
     'blog' => 'Блог',
