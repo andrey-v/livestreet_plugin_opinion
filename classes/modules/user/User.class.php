@@ -13,55 +13,63 @@
 /** @noinspection PhpUndefinedClassInspection */
 class PluginOpinion_ModuleUser extends PluginOpinion_Inherit_ModuleUser {
 
+    /**
+     * Инициализация модуля
+     */
+    public function Init() {
+        parent::Init();
+        $this->oMapper = Engine::GetMapper(__CLASS__);
+    }
+
     public function SetVotingComment($sTargetType, $iTargetId, $sVotingComment) {
         switch ($sTargetType) {
             case 'topic':
-                if (Config::Get('plugin.opinion.opinion_for_topic') == true)
+                if (Config::Get('plugin.opinion.opinion_for_topic') == TRUE)
                     if ($oTopic = $this->Topic_GetTopicById($iTargetId)) {
                         $iUserId = $oTopic->getUserId();
                         $this->oMapper->SetVotingComment($this->oUserCurrent->getId(), $iUserId, $iTargetId, $sTargetType, $sVotingComment);
-                        return true;
+                        return TRUE;
                     }
                 break;
             case 'blog':
-                if (Config::Get('plugin.opinion.opinion_for_blog') == true)
+                if (Config::Get('plugin.opinion.opinion_for_blog') == TRUE)
                     if ($oBlog = $this->Blog_GetBlogById($iTargetId)) {
                         $iUserId = $oBlog->getOwnerId();
                         $this->oMapper->SetVotingComment($this->oUserCurrent->getId(), $iUserId, $iTargetId, $sTargetType, $sVotingComment);
-                        return true;
+                        return TRUE;
                     }
                 break;
             case 'comment':
-                if (Config::Get('plugin.opinion.opinion_for_comment') == true)
+                if (Config::Get('plugin.opinion.opinion_for_comment') == TRUE)
                     if ($oComment = $this->Comment_GetCommentById($iTargetId)) {
                         $iUserId = $oComment->getUserId();
                         $this->oMapper->SetVotingComment($this->oUserCurrent->getId(), $iUserId, $iTargetId, $sTargetType, $sVotingComment);
-                        return true;
+                        return TRUE;
                     }
                 break;
             case 'user':
                 $this->oMapper->SetVotingComment($this->oUserCurrent->getId(), $iTargetId, $iTargetId, $sTargetType, $sVotingComment);
-                return true;
+                return TRUE;
                 break;
         }
 
-        return false;
+        return FALSE;
     }
 
     public function getRatingState($user_id) {
         /** @var $result array Результат по рейтингу пользователя */
         $result = array(
             'delta_position' => 0,
-            'new_position' => 0,
-            'delta_rating' => 0,
-            'new_rating' => 0,
+            'new_position'   => 0,
+            'delta_rating'   => 0,
+            'new_rating'     => 0,
         );
 
         /** @var $currentRating array|null Текущий рейтинг пользователя */
         $currentRating = $this->oMapper->GetCurrentRating($user_id);
 
         /** Если НЕ произошла ошибка в запросе */
-        if ($currentRating != null) {
+        if ($currentRating != NULL) {
 
             $lastRating = $currentRating;
 
@@ -74,7 +82,7 @@ class PluginOpinion_ModuleUser extends PluginOpinion_Inherit_ModuleUser {
                 $lastRating = $this->oMapper->GetLastRating($user_id);
             }
             /** Если НЕ произошла ошибка в запросе */
-            if ($lastRating != null) {
+            if ($lastRating != NULL) {
                 $result['delta_position'] = $lastRating['user_position'] - $currentRating['user_position'];
                 $result['new_position'] = $currentRating['user_position'];
                 $result['delta_rating'] = $lastRating['user_rating'] - $currentRating['user_rating'];
@@ -125,7 +133,7 @@ class PluginOpinion_ModuleUser extends PluginOpinion_Inherit_ModuleUser {
             return $this->oMapper->DeleteVotesByIds($iUserId, $aResult);
         }
 
-        return false;
+        return FALSE;
     }
 
     public function GetVoteForUser($oUser, $iValue) {
