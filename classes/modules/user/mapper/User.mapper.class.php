@@ -152,5 +152,41 @@ class PluginOpinion_ModuleUser_MapperUser extends PluginOpinion_Inherit_ModuleUs
         }
         return false;
     }
+    
+	
+    public function GetNewOpinionId($iUserId){
+        $sql = "SELECT `id` 
+            	    FROM " . Config::Get('db.table.opinion') . " 
+                 WHERE 
+		    `user_id` = ?d
+	         AND
+		    `comment_new` = 1
+        ";
+        $aResult = array();
+        if ($aRows = $this->oDb->select($sql, $iUserId)) {
+            foreach($aRows as $aRow){
+	        $aResult[] = $aRow['id'];
+	    } 
+            return $aResult;
+        }
+        return null;
+    }
+	
+	
+    public function SetReadOpinion($aOpinionId){
+        if (!is_array($aOpinionId)){
+            return false;
+        }
+        $sql = "UPDATE " . Config::Get('db.table.opinion') . "
+	        SET 
+		    `comment_new` = 0
+	        WHERE
+	    	    `id` IN (?a)
+	    ";
+        if ($this->oDb->query($sql,$aOpinionId)) {
+	    return true;
+        }
+        return false;
+    }
 
 }

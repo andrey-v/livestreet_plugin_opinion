@@ -15,3 +15,4 @@ CREATE TABLE IF NOT EXISTS `prefix_opinion_rating` (
   `user_position` INT NOT NULL,
 PRIMARY KEY (`user_id`) );
 
+ALTER TABLE `prefix_opinion` ADD `comment_new` INT(1) NOT NULL DEFAULT 1
