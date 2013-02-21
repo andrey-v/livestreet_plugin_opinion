@@ -244,4 +244,14 @@ class PluginOpinion_ModuleUser extends PluginOpinion_Inherit_ModuleUser {
          */
         return $iValue * $iDelta;
     }
+    
+    /** Получаем список новых мнений */    
+    public function GetNewOpinionId(){
+        return $this->oMapper->GetNewOpinionId($this->oUserCurrent->getId());
+    }
+    
+    /** Изменяем новые мнения в старые */    
+    public function SetReadOpinion($aOpinionId){
+        return $this->oMapper->SetReadOpinion($aOpinionId);
+    }
 }
