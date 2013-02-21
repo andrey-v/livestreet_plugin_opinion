@@ -35,7 +35,9 @@
                         {if $oVote['target_type']=='blog'}{$aLang.plugin.opinion.blog}{/if}
                         {if $oVote['target_type']=='user'}{$aLang.plugin.opinion.user}{/if}
                         {if $oVote['target_type']=='topic'}{$aLang.plugin.opinion.topic}{/if}
-
+                        {if $aNewOpinion and $oVote['id']|in_array:$aNewOpinion}
+                            <sup style="color: green;">new</sup>
+                        {/if}
                     </td>
                     <td class="cell-vote-count {if $oVote['vote_value']<0}bad-vote{else}good-vote{/if}">{if $oVote['vote_value']<0}-{else}+{/if}</td>
                     <td class="cell-vote-title">

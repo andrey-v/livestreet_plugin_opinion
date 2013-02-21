@@ -45,6 +45,10 @@ class PluginOpinion_HookOpinion extends Hook {
     public function VotingInfo($oUserProfile) {
         $oUserCurrent = $this->User_GetUserCurrent();
         if ($oUserCurrent && $oUserProfile['oUserProfile']->getId() == $oUserCurrent->getId()) {
+            
+            $iCountNewOpinion = $this->PluginOpinion_User_GetNewOpinionId();
+	        $this->Viewer_Assign('iCountNewOpinion',count($iCountNewOpinion));
+            
             return $this->Viewer_Fetch(Plugin::GetTemplatePath(__CLASS__) . 'voting_info_menu.tpl');
         }
     }
