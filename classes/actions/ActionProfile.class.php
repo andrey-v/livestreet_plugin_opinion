@@ -66,6 +66,14 @@ class PluginOpinion_ActionProfile extends PluginOpinion_Inherit_ActionProfile {
         /** Загружаем переменные в шаблон */
         $this->Viewer_Assign('aPaging', $aPaging);
         $this->Viewer_Assign('aVotes', $aVotes);
+        
+        /** Получаем список новых мнений */
+        $aNewOpinion = $this->PluginOpinion_User_GetNewOpinionId();
+        if ($aNewOpinion){
+            $this->Viewer_Assign('aNewOpinion', $aNewOpinion);
+        	$this->PluginOpinion_User_SetReadOpinion($aNewOpinion);
+        }
+        
         $this->Viewer_AddHtmlTitle($this->Lang_Get('plugin.opinion.about_user') . ' ' . $this->oUserProfile->getLogin());
 
         /** Устанавливаем шаблон вывода */
